@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <title>Situación de egreso desde el diseño en Chile</title>  
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3plus.org/js/d3plus-hierarchy.v0.8.full.min.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Index</a> 
+        <a href="chartjs-line.html" >Remuneraciones al 5to año</a> 
+        <a href="chartjs-bar.html" >Costo/edad</a>
+        <a href="chartjs-radar.html" >Empleabilidad según año</a> 
+        <a href="c3js-line.html" >Rangos salariales</a> 
+        <a href="d3plus-treemap.html" class="actual">Situación laboral</a>
+    </nav>
+
+    <div id="chart"></div>
+
+    <script>
+
+
+        var dataset = [{
+            tipo: "Empleados",
+            cantidad: 47
+        }, {
+            tipo: "Trabajador Independiente",
+            cantidad: 27
+        }, {
+            tipo: "Empresario Empleador",
+            cantidad: 18
+        }, {
+            tipo: "Desempleado",
+            cantidad: 8
+        }];
+
+        new d3plus.Treemap()
+            .data(dataset)
+            .groupBy("tipo")
+            .select("#chart")
+            .sum("cantidad")
+            .render()
+    </script>
+</body>
+
+</html>

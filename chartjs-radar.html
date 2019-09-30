@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <title>Situación de egreso desde el diseño en Chile</title>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Index</a> 
+        <a href="chartjs-line.html" >Remuneraciones al 5to año</a> 
+        <a href="chartjs-bar.html" >Costo/edad</a>
+        <a href="chartjs-radar.html" class="actual">Empleabilidad según año</a> 
+        <a href="c3js-line.html" >Rangos salariales</a> 
+        <a href="d3plus-treemap.html">Situación laboral</a>
+    </nav>
+
+    <canvas id="chart"></canvas>
+
+    <script>
+        var w = document.body.offsetWidth;
+
+        var sel;
+
+        function setup() {
+            noCanvas();
+            sel = createSelect();
+            sel.position(w - 180, 18);
+            sel.option('Primer año', 0);
+            sel.option('Segundo año', 1);
+            sel.changed(opciones);
+            primer();
+        }
+
+        function opciones() {
+            clear();
+            if (sel.value() == 0) {
+                primer();
+            } else {
+                segundo();
+            }
+        }
+        
+        
+                function primer() {
+            new Chart(document.getElementById('chart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                   labels: ["Diseño gráfico", "Diseño Industrial", "Diseño", "Diseño de vestuario"],
+                    datasets: [{
+                        label: "Universidades",
+                        backgroundColor: 'rgba(255, 255, 0,.1)',
+                        borderColor: '#79f',
+                        borderWidth: 1,
+                        pointRadius: 1,
+                        lineTension: 0,
+                        data: [52, 58, 63, 0],
+                    },  {
+                        label: "Institutos",
+                        backgroundColor: 'rgba(204, 102,255,.1)',
+                        borderColor: '#99d',
+                        borderWidth: 1,
+                        pointRadius: 1,
+                        lineTension: 0,
+                        data: [44, 55, 0, 46],
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Empleabilidad primer año de egreso según mención y centro de estudios'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    scale: {
+                        ticks: {
+                            min: 0,
+                            max: 100,
+                            stepSize: 20
+                        }
+                    }
+                }
+            });
+        }
+        function segundo() {
+            new Chart(document.getElementById('chart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                   labels: ["Diseño gráfico", "Diseño Industrial", "Diseño", "Diseño de vestuario"],
+                    datasets: [{
+                        label: "Universidades",
+                        backgroundColor: 'rgba(255, 255, 0,.1)',
+                        borderColor: '#79f',
+                        borderWidth: 1,
+                        pointRadius: 1,
+                        lineTension: 0,
+                        data: [64, 70, 73, 0],
+                    },  {
+                        label: "Institutos",
+                        backgroundColor: 'rgba(204, 102,255,.1)',
+                        borderColor: '#99d',
+                        borderWidth: 1,
+                        pointRadius: 1,
+                        lineTension: 0,
+                        data: [57, 82, 0, 64],
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Empleabilidad segundo año de egreso'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    scale: {
+                        ticks: {
+                            min: 0,
+                            max: 100,
+                            stepSize: 20
+                        }
+                    }
+                }
+            });
+        }
+        
+       
+    </script>
+
+</body>
+
+</html>

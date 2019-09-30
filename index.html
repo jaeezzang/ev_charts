@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- made by www.metatags.org --> 
+    <title>Situación de egreso desde el diseño en Chile</title>  
+    <meta name="description" content= "Gráficos con visualizaciones de datos sobre situación de egreso desde el diseño en Chile" />
+    <meta name="robots" content= "index, follow">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="actual">Index</a> 
+        <a href="chartjs-line.html" >Remuneraciones al 5to año</a> 
+        <a href="chartjs-bar.html">Costo/edad</a>
+        <a href="chartjs-radar.html" >Empleabilidad según año</a> 
+        <a href="c3js-line.html" >Rangos salariales</a> 
+        <a href="d3plus-treemap.html">Situación laboral</a>
+    </nav>
+
+    <div id="home">
+        <p><span id="saluda"></span> Somos Deianira Reyes y Javiera Castro. En este sitio web podrás ver datos sobre la situación de egreso de la carrera de diseño en Chile </p>
+    </div>
+    <script>
+        var saludos = ["Hola", "Hi", "Hallo", "Ciao"];
+        var cromas = ["#80d8ff"]
+
+        function setup() {
+            noCanvas();
+            createElement('strong', random(saludos) + '!').parent('saluda').style('color', random(cromas));
+        }
+    </script>
+
+</body>
+
+</html>
